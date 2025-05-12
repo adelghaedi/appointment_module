@@ -1,0 +1,48 @@
+<odoo>
+    <record id="appointment_appointment_tree" model="ir.ui.view">
+        <field name="name">appointment.appointment.tree</field>
+        <field name="model">appointment.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="appointments">
+                <field name="start_datetime"/>
+                <field name="end_datetime"/>
+                <field name="service_id"/>
+                <field name="customer_id"/>
+                <field name="employee_id"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="appointment_appointment_form" model="ir.ui.view">
+        <field name="name">appointment.appointment.form</field>
+        <field name="model">appointment.appointment</field>
+        <field name="arch" type="xml">
+            <form string="appointment">
+
+                
+
+
+                <sheet>
+                    <group>
+                        <field name="start_datetime"/>  
+                        <field name="duration"/>
+                        <field name="end_datetime" readonly="1"/>    
+                        <field name="service_id"/>
+                        <field name="employee_id"/>
+                        <field name="customer_id"/>
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="appointment_appointment_action" model="ir.actions.act_window">
+        <field name="name">appointments</field>
+        <field name="res_model">appointment.appointment</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    
+</odoo>

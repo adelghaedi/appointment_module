@@ -1,0 +1,108 @@
+<odoo>
+    <record id="appointment_customer_tree" model="ir.ui.view">
+        <field name="name">appointment.customer.tree</field>
+        <field name="model">appointment.customer</field>
+        <field name="arch" type="xml">
+            <tree string="Customers">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="gender"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="appointment_customer_kanban" model="ir.ui.view">
+        <field name="name">appointment.customer.kanban</field>
+        <field name="model">appointment.customer</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_example">
+                <field name="name"/>
+                <field name="phone"/>
+                <field name="email"/>
+                <field name="gender"/>
+
+                <templates>
+                    <t t-name="kanban-box">
+
+                        <div class="oe_kanban_global_click">
+                            <div class="o_kanban_image me-2 mt-2" >
+                                <img t-att-src=" kanban_image('appointment.customer', 'image' ,record.id.value)" class="oe_kanban_avatar" alt="Image"/>
+                            </div>
+
+
+                            
+                            <div> <strong><field name="name"/></strong></div>
+                            <div>📞 <field name="phone"/> </div>
+                            <div>✉️ <field name="email"/> </div>
+                            <div>👤 <field name="gender"/> </div>
+
+                        </div>
+                    </t>
+
+
+                </templates>
+
+            </kanban>
+        </field>
+    </record>
+
+    <record id="appointment_customer_form" model="ir.ui.view">
+        <field name="name">appointment.customer.form</field>
+        <field name="model">appointment.customer</field>
+        <field name="arch" type="xml">
+            <form string="Customer">
+
+                <header>
+                    <button 
+                        name="action_show_appointment"
+                        type="object"
+                        class="btn-primary">
+
+
+                <div class="o_field_widget o_stat_info">
+                    <span class="o_stat_value">
+                        <field name="total_appointments"/>
+                    </span>
+                    <span class="o_stat_text">
+                        Appointments
+                    </span>
+                </div>
+                </button>
+            </header>
+
+
+                <sheet>
+                    
+
+                    
+                        <div class="me-5">
+                            <field name="image" widget="image" class="oe_avatar" />
+                        </div>
+                        <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="gender"/>
+                            <field name="birth_date"/>
+                            
+                        </group>
+                        <group>
+                        <field name="phone"/>
+                            <field name="email"/>
+                    </group>
+                    </group>
+                    
+                    
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="appointment_customer_action" model="ir.actions.act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">appointment.customer</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+
+    
+</odoo>

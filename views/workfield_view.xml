@@ -1,0 +1,52 @@
+<odoo>
+    <record id="appointment_workfield_tree" model="ir.ui.view">
+        <field name="name">appointment.workfield.tree</field>
+        <field name="model">appointment.workfield</field>
+        <field name="arch" type="xml">
+            <tree string="WorkFields">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="appointment_appointment_form" model="ir.ui.view">
+        <field name="name">appointment.workfield.form</field>
+        <field name="model">appointment.workfield</field>
+        <field name="arch" type="xml">
+            <form string="WorkField">
+                <sheet>
+                    <group>
+                        <field name="name"/> 
+                    </group>
+
+
+                        <notebook>
+                        <page string="Services">
+                            <field name="service_ids" >
+                                <tree>
+                                <field name="name"/>
+                                </tree>
+                            </field>
+
+                        </page>
+                            <page string="Employess">
+                            <field name="employee_ids" >
+                                <tree>
+                                    <field name="name"/>
+                                </tree>   
+                            </field>
+                            </page>
+                        </notebook>      
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="appointment_workfield_action" model="ir.actions.act_window">
+        <field name="name">workfields</field>
+        <field name="res_model">appointment.workfield</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    
+</odoo>
