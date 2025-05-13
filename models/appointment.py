@@ -19,7 +19,6 @@ class Appointment(models.Model):
         "appointment.service",
         string="Service",
         ondelete="restrict",
-        # domain="[('employee_ids','in',employee_id)]"
     )
 
     customer_id=fields.Many2one(
@@ -51,35 +50,38 @@ class Appointment(models.Model):
             if record.start_datetime<fields.Datetime.now():
                 raise ValidationError("The start datetime cannot be set in the past")
             
-    # @api.constrains("start_datetime")
-    # def _check_unique_employee_appointment_date_time(self):
-    #     for record in self:
-    #         if not (record.employee_id and record.start_datetime and record.end_datetime):
-    #             continue
 
-    #         same_start_datetime=self.search([
-    #               ('id', '!=', record.id),
-    #               ('employee_id', '=', record.employee_id.id),
-    #                ('start_datetime', '=', record.start_datetime),
-    #         ])
 
-    #         if same_start_datetime:
-    #             raise ValidationError("The start datetime conflicts with another appointment.")
+    @api.constrains("customer_id","start_datetime","end_datetime")
+    def _check_unique_customer_appointment_date_time(self):
+        for record in self:
+            if not (record.customer_id and record.start_datetime and record.end_datetime):
+                continue
+
+            conflict=self.search([
+                  ('id', '!=', record.id),
+                  ('customer_id', '=', record.customer_id.id),
+                   ('start_datetime', '<', record.end_datetime),
+                   ('end_datetime', '>', record.start_datetime),
+            ])
+
+            if conflict:
+                raise ValidationError("The end datetime conflicts with another appointment.")
 
     
 
-    # @api.constrains("employee_id,start_datetime ,end_datetime")
-    # def _check_unique_employee_appointment_date_time(self):
-    #     for record in self:
-    #         if not (record.employee_id and record.start_datetime and record.end_datetime):
-    #             continue
+    @api.constrains("employee_id","start_datetime","end_datetime")
+    def _check_unique_employee_appointment_date_time(self):
+        for record in self:
+            if not (record.employee_id and record.start_datetime and record.end_datetime):
+                continue
 
-    #         conflict=self.search([
-    #               ('id', '!=', record.id),
-    #               ('employee_id', '=', record.employee_id.id),
-    #                ('start_datetime', '<', record.end_datetime),
-    #                ('end_datetime', '>', record.start_datetime),
-    #         ])
+            conflict=self.search([
+                  ('id', '!=', record.id),
+                  ('employee_id', '=', record.employee_id.id),
+                   ('start_datetime', '<', record.end_datetime),
+                   ('end_datetime', '>', record.start_datetime),
+            ])
 
-    #         if conflict:
-    #             raise ValidationError("The end datetime conflicts with another appointment.")
+            if conflict:
+                raise ValidationError("The end datetime conflicts with another appointment.")

@@ -28,4 +28,3 @@ Thumbs.db
 # Docker
 *.sock.*
 pid
-docker-compose.override.yml
