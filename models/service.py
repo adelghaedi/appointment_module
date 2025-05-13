@@ -9,6 +9,7 @@ class Service(models.Model):
 
     name=fields.Char(string="name",required=True)
     price=fields.Float(string="price",required=True)
+    image=fields.Image(string="service_image")
 
     workfield_id=fields.Many2one(
         "appointment.workfield",
