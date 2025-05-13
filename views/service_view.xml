@@ -3,9 +3,10 @@
         <field name="name">appointment.service.tree</field>
         <field name="model">appointment.service</field>
         <field name="arch" type="xml">
-            <tree string="Services">
-                    <field name="image" widget="image" class="oe_avatar" options="{'size': [64, 64]}" nolabel="1"/>
+            <tree string="Services" >
+                    <field name="image" widget="image" class="oe_avatar" options="{'size': [64, 64]}"/>
                     <field name="name"/>
+                    <field name="sequence" widget="handle"/>
                     <field name="price"/>
             </tree>
         </field>
