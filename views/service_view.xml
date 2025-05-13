@@ -4,6 +4,7 @@
         <field name="model">appointment.service</field>
         <field name="arch" type="xml">
             <tree string="Services">
+                    <field name="image" widget="image" class="oe_avatar" options="{'size': [64, 64]}" nolabel="1"/>
                     <field name="name"/>
                     <field name="price"/>
             </tree>
@@ -16,6 +17,8 @@
         <field name="arch" type="xml">
             <form string="Service">
                 <sheet>
+                    <div class="me-5"><field name="image" widget="image" class="oe_avatar" /></div>
+
                     <group>
                         <field name="name"/>
                         <field name="workfield_id"/>
