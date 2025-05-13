@@ -19,6 +19,7 @@ class Appointment(models.Model):
         "appointment.service",
         string="Service",
         ondelete="restrict",
+        # domain="[('employee_ids','in',employee_id)]"
     )
 
     customer_id=fields.Many2one(

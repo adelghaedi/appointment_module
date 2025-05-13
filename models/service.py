@@ -16,6 +16,13 @@ class Service(models.Model):
         ondelete="cascade"
         )
     
+    employee_ids=fields.Many2many(
+        "appointment.employee",
+        string="Employees",
+        relation="appointment_employee_service_rel",
+        column1="service_ids",
+        column2="employee_ids",
+    )    
 
 
     

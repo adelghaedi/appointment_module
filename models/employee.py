@@ -43,7 +43,7 @@ class Employee(models.Model):
             "res_model":"appointment.appointment",
             "domain": [("employee_id", "=", self.id)],
             "context": {"default_employee_id": self.id},
-            "target": "new",
+            "target": "current",
         }
     
     # return defulat action 
