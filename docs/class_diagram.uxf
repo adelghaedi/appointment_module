@@ -11,6 +11,7 @@
 --
 + name: Char
 + price: Float
++ image: Image
 --</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1064</x><y>504</y><w>104</w><h>368</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1..1
 m2=0..n
