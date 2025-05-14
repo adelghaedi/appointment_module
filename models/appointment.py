@@ -33,7 +33,6 @@ class Appointment(models.Model):
         string="Employee",
         ondelete="restrict",
         domain="[('service_ids', 'in', service_id)]"
-
     )
 
 

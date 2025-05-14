@@ -1,61 +1,62 @@
-<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>592</x><y>856</y><w>192</w><h>152</h></coordinates><panel_attributes>Appointment
+<diagram program="umletino" version="15.1"><zoom_level>8</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>976</x><y>856</y><w>192</w><h>152</h></coordinates><panel_attributes>Appointment
 --
 + date: Date
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>864</y><w>192</w><h>152</h></coordinates><panel_attributes>Customer
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>384</x><y>864</y><w>192</w><h>152</h></coordinates><panel_attributes>Customer
 --
-+ name: Char
-+ phone: Char
-+ email: Char
-+ birth_date: Date
-+ gender: Selection
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>32</x><y>376</y><w>192</w><h>152</h></coordinates><panel_attributes>Employee
+
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>416</x><y>376</y><w>192</w><h>152</h></coordinates><panel_attributes>Employee
 --
-+ name: Char
-+ field: Char
-+ phone: Char
-+ email: Char
-+ birth_date: Date
-+ gender: Selection
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>608</x><y>360</y><w>192</w><h>152</h></coordinates><panel_attributes>Service
+
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>992</x><y>360</y><w>192</w><h>152</h></coordinates><panel_attributes>Service
 --
 + name: Char
 + price: Float
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>680</x><y>504</y><w>104</w><h>368</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
++ image: Image
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1064</x><y>504</y><w>104</w><h>368</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1..1
 m2=0..n
 r1=Appointments
 r2=Service
-  provision &gt;</panel_attributes><additional_attributes>30;10;10;440</additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>912</y><w>424</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+  provision &gt;</panel_attributes><additional_attributes>30;10;10;440</additional_attributes></element><element><id>Relation</id><coordinates><x>568</x><y>912</y><w>424</w><h>88</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1..1
 m2=0..n
 r1=Appointments
 r2=Customer
-  Give &gt;</panel_attributes><additional_attributes>10;80;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>216</x><y>440</y><w>464</w><h>432</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+  Give &gt;</panel_attributes><additional_attributes>10;80;510;20</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>440</y><w>464</w><h>432</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1..1
 m2=0..n
 r1=Appointments
 r2=Employee
-  Give &gt;</panel_attributes><additional_attributes>10;10;520;520</additional_attributes></element><element><id>Relation</id><coordinates><x>88</x><y>520</y><w>112</w><h>360</h></coordinates><panel_attributes>lt=-
+  Give &gt;</panel_attributes><additional_attributes>10;10;520;520</additional_attributes></element><element><id>Relation</id><coordinates><x>472</x><y>520</y><w>112</w><h>360</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2=0..n
 r1=Customers
 r2=Employees
-give appointment &gt;</panel_attributes><additional_attributes>10;430;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>216</x><y>392</y><w>408</w><h>64</h></coordinates><panel_attributes>lt=-
+give appointment &gt;</panel_attributes><additional_attributes>10;430;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>600</x><y>392</y><w>408</w><h>64</h></coordinates><panel_attributes>lt=-
 m1=0..n
 m2=0..n
 r1=Employees
 r2=Servieces
-provision &gt;</panel_attributes><additional_attributes>10;20;490;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>408</x><y>0</y><w>192</w><h>152</h></coordinates><panel_attributes>WorkField
+provision &gt;</panel_attributes><additional_attributes>10;20;490;50</additional_attributes></element><element><id>UMLClass</id><coordinates><x>792</x><y>0</y><w>192</w><h>152</h></coordinates><panel_attributes>WorkField
 --
 + name: Char
---</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>144</y><w>256</w><h>232</h></coordinates><panel_attributes>lt=&lt;&lt;-
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>888</x><y>144</y><w>256</w><h>232</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=1..1
 m2=1..n
 r1=Services
 r2=WorkField
-Use in &gt;</panel_attributes><additional_attributes>10;10;260;270</additional_attributes></element><element><id>Relation</id><coordinates><x>120</x><y>144</y><w>304</w><h>248</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-
+Use in &gt;</panel_attributes><additional_attributes>10;10;260;270</additional_attributes></element><element><id>Relation</id><coordinates><x>504</x><y>144</y><w>304</w><h>248</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1= 0..n
 m2= 1..1
 r1=WorkField
 r2= Employees
- Have &gt;</panel_attributes><additional_attributes>10;290;360;10</additional_attributes></element></diagram>
+ Have &gt;</panel_attributes><additional_attributes>10;290;360;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>592</y><w>192</w><h>152</h></coordinates><panel_attributes>Person
+--
++ name: Char
++ phone: Char
++ email: Char
++ birth_date: Date
++ gender: Selection
++ image: Image
+
+--</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>688</y><w>216</w><h>272</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;250;320</additional_attributes></element><element><id>Relation</id><coordinates><x>184</x><y>456</y><w>248</w><h>232</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;270;290;10</additional_attributes></element></diagram>

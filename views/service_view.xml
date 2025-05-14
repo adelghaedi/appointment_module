@@ -3,8 +3,11 @@
         <field name="name">appointment.service.tree</field>
         <field name="model">appointment.service</field>
         <field name="arch" type="xml">
-            <tree string="Services">
+            <tree string="Services" decoration-danger="quantity &lt; 10">
+                    <field name="image" widget="image" class="oe_avatar" options="{'size': [40, 40]}"/>
+                    <field name="sequence" widget="handle"/>
                     <field name="name"/>
+                    <field name="quantity"/>
                     <field name="price"/>
             </tree>
         </field>
@@ -16,9 +19,12 @@
         <field name="arch" type="xml">
             <form string="Service">
                 <sheet>
+                    <div class="me-5"><field name="image" widget="image" class="oe_avatar" /></div>
+
                     <group>
                         <field name="name"/>
                         <field name="workfield_id"/>
+                        <field name="quantity"/>
                         <field name="price"/>
                     </group>
                 </sheet>

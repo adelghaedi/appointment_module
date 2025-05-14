@@ -6,9 +6,13 @@ class Service(models.Model):
         ("_check_unique_name","UNIQUE(name)","This servie exists..."),
         ("_check_price_positive","CHECK(price>0)","Price must be positive..."),
     ]
+    _order="quantity desc"
 
     name=fields.Char(string="name",required=True)
     price=fields.Float(string="price",required=True)
+    image=fields.Image(string="service_image")
+    sequence=fields.Integer(string="sequence",default=10)
+    quantity=fields.Integer(string="quantity")
 
     workfield_id=fields.Many2one(
         "appointment.workfield",

@@ -17,26 +17,9 @@
         <field name="model">appointment.employee</field>
         <field name="arch" type="xml">
             <form string="Employee">
-
-            
+                
 
                 <header>
-                   
-                 <button 
-                        name="action_show_appointment"
-                        type="object"
-                        class="btn-primary">
-
-
-                <div class="o_field_widget o_stat_info">
-                    <span class="o_stat_value">
-                        <field name="total_appointments"/>
-                    </span>
-                    <span class="o_stat_text">
-                        Appointments
-                    </span>
-                </div>
-                </button>
                 
                 <button 
                     name="action_show_customers"
@@ -53,6 +36,25 @@
 
             </header>
                 <sheet>
+                    <div class="oe_stat_box" name="button_box">
+                <button 
+                        name="action_show_appointment"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-calendar"
+                        >
+
+
+                <div class="o_field_widget o_stat_info">
+                    <span class="o_stat_value">
+                        <field name="total_appointments"/>
+                    </span>
+                    <span class="o_stat_text">
+                        Appointments
+                    </span>
+                </div>
+                </button>
+                </div>
 
 
                         <div class="me-5">
