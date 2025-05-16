@@ -1,5 +1,4 @@
 from odoo import models,fields,api
-from odoo.exceptions import UserError
 import logging
 
 
@@ -25,6 +24,7 @@ class WorkField(models.Model):
         string="Employees",
     )
 
+    # example override write method
     def write(self,vals):
         if 'name' in vals:
             _logging.info(f" update name: ${vals['name']}")
