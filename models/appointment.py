@@ -72,4 +72,11 @@ class Appointment(models.Model):
         for record in self:
             if record.service_id and record.service_id.quantity<=0:
                 raise ValidationError("No available quantity for the selected service.")
-
+    
+    @api.model
+    def create(self,vals):
+        record=super().create(vals)
+        service=record.service_id
+        if service and service.quantity:
+            service.quantity-=1
+        return record
