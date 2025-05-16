@@ -10,7 +10,7 @@ class Appointment(models.Model):
     ]
 
     start_datetime=fields.Datetime(string="start_datetime",required=True)
-    duration=fields.Float(string="duraton",default="1.0",required=True)
+    duration=fields.Float(string="duraton",default=1.0,required=True)
     end_datetime=fields.Datetime(string="end_datetime",compute="_compute_end_datetime",store=True)
 
 
@@ -19,7 +19,6 @@ class Appointment(models.Model):
         "appointment.service",
         string="Service",
         ondelete="restrict",
-        # domain="[('employee_ids','in',employee_id)]"
     )
 
     customer_id=fields.Many2one(
@@ -68,20 +67,9 @@ class Appointment(models.Model):
             if conflict:
                 raise ValidationError("The end datetime conflicts with another appointment.")
 
-    
-
-    @api.constrains("employee_id","start_datetime","end_datetime")
-    def _check_unique_employee_appointment_date_time(self):
+    @api.constrains("service_id")
+    def _check_quantity_selected_service(self):
         for record in self:
-            if not (record.employee_id and record.start_datetime and record.end_datetime):
-                continue
+            if record.service_id and record.service_id.quantity<=0:
+                raise ValidationError("No available quantity for the selected service.")
 
-            conflict=self.search([
-                  ('id', '!=', record.id),
-                  ('employee_id', '=', record.employee_id.id),
-                   ('start_datetime', '<', record.end_datetime),
-                   ('end_datetime', '>', record.start_datetime),
-            ])
-
-            if conflict:
-                raise ValidationError("The end datetime conflicts with another appointment.")
