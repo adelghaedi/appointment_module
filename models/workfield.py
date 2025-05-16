@@ -1,4 +1,9 @@
 from odoo import models,fields,api
+from odoo.exceptions import UserError
+import logging
+
+
+_logging=logging.getLogger(__name__)
 
 class WorkField(models.Model):
     _name="appointment.workfield"
@@ -19,3 +24,8 @@ class WorkField(models.Model):
         inverse_name="workfield_id",
         string="Employees",
     )
+
+    def write(self,vals):
+        if 'name' in vals:
+            _logging.info(f" update name: ${vals['name']}")
+        return super().write(vals)
