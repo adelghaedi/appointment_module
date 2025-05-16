@@ -80,3 +80,5 @@ class Appointment(models.Model):
         if service and service.quantity:
             service.quantity-=1
         return record
+    
+  
