@@ -21,18 +21,15 @@
             <form string="appointment">
 
                 
-
-
+                 
+                  
                 <sheet>
                     <group>
-                        <field name="start_datetime"/>  
-                        <field name="duration"/>
-                        <field name="end_datetime" readonly="1"/>    
-                        <field name="service_id"/>
-                        <field name="employee_id"/>
-                        <field name="customer_id"/>
+                 
                         
                     </group>
+
+
                 </sheet>
             </form>
         </field>
@@ -41,7 +38,7 @@
     <record id="appointment_appointment_action" model="ir.actions.act_window">
         <field name="name">appointments</field>
         <field name="res_model">appointment.appointment</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">form,tree</field>
     </record>
 
     

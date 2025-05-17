@@ -12,6 +12,18 @@ class Appointment(models.Model):
     start_datetime=fields.Datetime(string="start_datetime",required=True)
     duration=fields.Float(string="duraton",default=1.0,required=True)
     end_datetime=fields.Datetime(string="end_datetime",compute="_compute_end_datetime",store=True)
+    state=fields.Selection(
+        [
+            ("draft","Draft"),
+         ("confirmed","Confirmed"),
+         ("done","Done"),
+         ("cancelled","Cancelled"),
+         ("rejected","Rejected"),
+        ],
+        string="state",
+        default="draft",
+    )
+
 
 
 
@@ -81,4 +93,26 @@ class Appointment(models.Model):
             service.quantity-=1
         return record
     
-  
+    def _check_employee_user(self):
+        if not self.env.user.has_group('appointment.group_employee'):
+            raise ValidationError("Only employees can perform this action.")
+
+    def action_confirm(self):
+        self._check_employee_user()
+        self.write({'state': 'confirmed'})
+
+    def action_reject(self):
+        self._check_employee_user()
+        self.write({'state': 'rejected'})
+
+    def action_done(self):
+        self._check_employee_user()
+        self.write({'state': 'done'})
+
+    def action_show(self):
+        # اینجا یک مثال ساده است
+        return {
+            'type': 'ir.actions.act_window.message',
+            'title': 'Show Action',
+            'message': 'This is the Show button!',
+        }
