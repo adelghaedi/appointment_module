@@ -9,6 +9,7 @@
     "application": True,
     "depends": ["base"],
     "data":[
+        "security/appointment_group.xml",
         "security/ir.model.access.csv",
         "views/customer_view.xml",
         "views/employee_view.xml",
