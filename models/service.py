@@ -1,10 +1,14 @@
 from odoo import models,fields,api
 
+
+
+
 class Service(models.Model):
     _name="appointment.service"
     _sql_constraints=[
-        ("_check_unique_name","UNIQUE(name)","This servie exists..."),
+        ("_check_unique_name","UNIQUE(name)","This service exists..."),
         ("_check_price_positive","CHECK(price>0)","Price must be positive..."),
+        ("_check_quantity_nonnegative","CHECK(quantity>=0)","Quantity cannot negative..."),
     ]
     _order="quantity desc"
 
