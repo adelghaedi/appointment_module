@@ -24,8 +24,6 @@ class Service(models.Model):
         ondelete="cascade"
         )
     
-<<<<<<< HEAD
-=======
     employee_ids=fields.Many2many(
         "appointment.employee",
         string="Employees",
@@ -36,4 +34,3 @@ class Service(models.Model):
 
 
     
->>>>>>> 17.0
