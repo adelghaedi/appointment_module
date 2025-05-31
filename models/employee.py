@@ -4,6 +4,9 @@ from odoo import models,fields,api
 class Employee(models.Model):
     _name="appointment.employee"
     _inherit="appointment.person"
+
+    user_id = fields.Many2one('res.users', string='User', required=True)
+
     
 
 

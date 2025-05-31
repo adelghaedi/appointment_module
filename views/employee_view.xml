@@ -70,6 +70,7 @@
                             <field name="phone"/>
                             <field name="email"/>
                             <field name="workfield_id"/>
+                            <field name="user_id"/>
                         </group>
                         </group>
                         

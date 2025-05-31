@@ -13,22 +13,37 @@
             </tree>
         </field>
     </record>
-
+    <delete id="appointment_appointment_form1" model="ir.ui.view"/>
     <record id="appointment_appointment_form" model="ir.ui.view">
         <field name="name">appointment.appointment.form</field>
         <field name="model">appointment.appointment</field>
         <field name="arch" type="xml">
             <form string="appointment">
-
+            <header>
+                <button name="action_confirm" type="object" string="Confirm"
+                         class="btn-success"
+                        groups="appointment_module.group_employee"/>
                 
-                 
+                <button name="action_reject" type="object" string="Reject"
+                         class="btn-danger"
+                        groups="appointment_module.group_employee"/>
+
+            </header>
                   
                 <sheet>
+                <group>
                     <group>
-                 
-                        
+                        <field name="start_datetime"/>
+                        <field name="duration"/>
+                        <field name="end_datetime"/>
                     </group>
-
+                        
+                    <group>
+                        <field name="service_id"/>
+                        <field name="customer_id"/>
+                        <field name="employee_id"/>
+                    </group>
+                    </group>
 
                 </sheet>
             </form>
@@ -38,7 +53,7 @@
     <record id="appointment_appointment_action" model="ir.actions.act_window">
         <field name="name">appointments</field>
         <field name="res_model">appointment.appointment</field>
-        <field name="view_mode">form,tree</field>
+        <field name="view_mode">tree,form</field>
     </record>
 
     

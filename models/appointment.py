@@ -14,7 +14,7 @@ class Appointment(models.Model):
     end_datetime=fields.Datetime(string="end_datetime",compute="_compute_end_datetime",store=True)
     state=fields.Selection(
         [
-            ("draft","Draft"),
+        ("draft","Draft"),
          ("confirmed","Confirmed"),
          ("done","Done"),
          ("cancelled","Cancelled"),
@@ -23,7 +23,6 @@ class Appointment(models.Model):
         string="state",
         default="draft",
     )
-
 
 
 
@@ -98,21 +97,19 @@ class Appointment(models.Model):
             raise ValidationError("Only employees can perform this action.")
 
     def action_confirm(self):
-        self._check_employee_user()
-        self.write({'state': 'confirmed'})
+        pass
 
     def action_reject(self):
-        self._check_employee_user()
-        self.write({'state': 'rejected'})
+        pass
 
     def action_done(self):
         self._check_employee_user()
         self.write({'state': 'done'})
 
     def action_show(self):
-        # اینجا یک مثال ساده است
         return {
             'type': 'ir.actions.act_window.message',
             'title': 'Show Action',
             'message': 'This is the Show button!',
         }
+    
