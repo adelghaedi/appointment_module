@@ -17,6 +17,7 @@
         "views/workfield_view.xml",
         "views/main_view.xml",
         "templates/service_list_template.xml",
+        "templates/service_detail_template.xml",
     ],
     "controllers":[
         "controllers/service_controller.py",
