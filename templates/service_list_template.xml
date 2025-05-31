@@ -3,14 +3,16 @@
 
 
         <t t-call="website.layout">
-
             <div class="container my-5">
                 <h1 class="mb-4 text-center text-primary">Services List</h1>
 
                 <div class="row">
                      
                     <t t-foreach="services" t-as="service">
+                        
+
                         <div class="col-md-4 mb-4">
+                            <a t-att-href="'/service/%s' %service.id" class="text-decoration-none text-dark">
                             <div class="card shadow-sm h-100">
                               
                                   <t t-if="service.image">
@@ -42,11 +44,12 @@
                                     </p>
                                 </div>
                             </div>
+                        </a>
                         </div>
                     </t>
                 </div>
             </div>
-        </t>
+            </t>
     </template>
 </odoo>
 

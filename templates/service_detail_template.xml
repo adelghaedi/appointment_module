@@ -1,0 +1,49 @@
+<odoo>
+
+    <template id="appointment_service_detail_template">
+
+        <t t-call="website.layout">
+            <div class="container my-5">
+                <div class="row align-items-center">
+                    <div class="col-md-4">
+                        <t t-if="service.image">
+                            <img t-att-src="image_data_uri(service.image)"
+                            class="card-img-top"
+                            alt="Service Image"
+                            style="bject-fit: cover;"/>
+                        </t>
+                        <t t-else="">
+                            <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 400px;">
+                                        <span class="text-muted">No Picture</span>
+                            </div>
+                        </t>
+                </div>
+
+                <div class="col-md-4">
+                    <h2 class="mb-3"><t t-out="service.name"/></h2> 
+                    <p class="text-muted">Price: <strong><t t-out="service.price"/></strong> </p>
+                    <p>Quantity:<t t-out="service.quantity"/></p>
+                    <p>
+                        <t t-if="service.workfield_id">
+                         WorkField: <strong><t t-out="service.workfield_id.name"/></strong>
+                        </t>
+                    </p>
+                 </div>
+        
+        
+        
+        
+            </div>
+
+
+            </div>
+        
+
+        
+        </t>
+    </template>
+
+
+
+
+</odoo>
