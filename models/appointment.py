@@ -16,12 +16,11 @@ class Appointment(models.Model):
         [
         ("draft","Draft"),
          ("confirmed","Confirmed"),
-         ("done","Done"),
-         ("cancelled","Cancelled"),
          ("rejected","Rejected"),
         ],
         string="state",
         default="draft",
+        tracking=True,
     )
 
 
@@ -44,6 +43,8 @@ class Appointment(models.Model):
         ondelete="restrict",
         domain="[('service_ids', 'in', service_id)]"
     )
+
+    
 
 
     @api.depends("start_datetime" , "duration")
@@ -97,10 +98,16 @@ class Appointment(models.Model):
             raise ValidationError("Only employees can perform this action.")
 
     def action_confirm(self):
-        pass
+        if self.start_datetime>fields.Datetime.now():
+            self.write({"state":"confirmed"})
+        else:
+            raise ValidationError("Cannot confirm an appointment that has already passed.")
 
     def action_reject(self):
-        pass
+        if self.start_datetime > fields.Datetime.now():
+            self.write({"state":"rejected"})
+        else:
+            raise ValidationError("Cannot confirm an appointment that has already passed.")
 
     def action_done(self):
         self._check_employee_user()
