@@ -3,6 +3,8 @@
         <field name="name">appointment.service.tree</field>
         <field name="model">appointment.service</field>
         <field name="arch" type="xml">
+            
+            
             <tree string="Services" decoration-danger="quantity &lt; 10">
                     <field name="image" widget="image" class="oe_avatar" options="{'size': [40, 40]}"/>
                     <field name="sequence" widget="handle"/>
@@ -18,7 +20,17 @@
         <field name="model">appointment.service</field>
         <field name="arch" type="xml">
             <form string="Service">
+                <header>
+                    <button name="action_service_website" class="btn-primary" type="object">
+                        Website
+                    </button>
+                </header>
+                
                 <sheet>
+
+                    
+
+
                     <div class="me-5"><field name="image" widget="image" class="oe_avatar" /></div>
 
                     <group>
