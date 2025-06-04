@@ -13,8 +13,7 @@
             </tree>
         </field>
     </record>
-
-    <record id="appointment_appointment_form" model="ir.ui.view">
+    <record id="appointment_appointment_form1" model="ir.ui.view">
         <field name="name">appointment.appointment.form</field>
         <field name="model">appointment.appointment</field>
         <field name="arch" type="xml">
@@ -31,7 +30,6 @@
                         <field name="service_id"/>
                         <field name="employee_id"/>
                         <field name="customer_id"/>
-                        
                     </group>
                 </sheet>
             </form>
@@ -42,6 +40,21 @@
         <field name="name">appointments</field>
         <field name="res_model">appointment.appointment</field>
         <field name="view_mode">tree,form</field>
+    </record>
+
+
+    
+
+    <record id="action_create_calendar_event" model="ir.actions.server">
+        <field name="name">Create Calendar Event For Customer</field>
+        <field name="model_id" ref="model_appointment_appointment"/>
+        <field name="binding_model_id" ref="model_appointment_appointment"/>
+        <field name="binding_type">action</field>
+        <field name="binding_view_types">tree,form</field>
+        <field name="state">code</field>
+        <field name="code">
+        record.create_calendar_event()
+        </field>
     </record>
 
     
