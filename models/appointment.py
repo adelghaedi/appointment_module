@@ -22,7 +22,7 @@ class Appointment(models.Model):
     )
 
     customer_id=fields.Many2one(
-        "appointment.customer",
+        "res.partner",
         string="Customer",
         ondelete="restrict",
     )
