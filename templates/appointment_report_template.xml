@@ -1,0 +1,46 @@
+<odoo>
+  <template id="report_appointment">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="doc">
+        <div class="page" style="padding: 30px; font-family: 'Arial', sans-serif;">
+
+          <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">
+            Appointment Summary
+          </h2>
+
+          <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #f9f9f9;">
+            <table style="width: 100%; font-size: 14px;">
+              <tr>
+                <td style="padding: 8px;"><strong>Customer:</strong></td>
+                <td style="padding: 8px;"><t t-out="doc.customer_id.name"/></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px;"><strong>Employee:</strong></td>
+                <td style="padding: 8px;"><t t-out="doc.employee_id.name"/></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px;"><strong>Service:</strong></td>
+                <td style="padding: 8px;"><t t-out="doc.service_id.name"/></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px;"><strong>Start DateTime:</strong></td>
+                <td style="padding: 8px;"><t t-out="doc.start_datetime"/></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px;"><strong>End DateTime:</strong></td>
+                <td style="padding: 8px;"><t t-out="doc.end_datetime"/></td>
+              </tr>
+              <tr>
+                <td style="padding: 8px;"><strong>Duration:</strong></td>
+                <td style="padding: 8px;"><t t-out="doc.duration"/></td>
+              </tr>
+            </table>
+          </div>
+
+          <hr style="margin: 40px 0; border: none; border-top: 1px dashed #aaa;" />
+
+        </div>
+      </t>
+    </t>
+  </template>
+</odoo>
