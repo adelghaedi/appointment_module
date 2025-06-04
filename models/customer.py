@@ -2,10 +2,10 @@ from odoo import models,fields,api
 
 
 class Customer(models.Model):
-    _name="appointment.customer"
-    _inherit="appointment.person"
+    _inherit="res.partner"
 
-   
+    total_appointments=fields.Integer(compute="_compute_total_appointments")
+
 
 
     appointment_ids=fields.One2many(
@@ -22,7 +22,7 @@ class Customer(models.Model):
         for record in self:
             record.total_appointments=len(record.appointment_ids)
 
-    def action_show_appointment(self)->dict:
+    def action_show_appointment(self):
         self.ensure_one()
         return {
             "type":"ir.actions.act_window",
