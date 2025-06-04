@@ -7,7 +7,10 @@
     "license": "AGPL-3",
     "installable": True,
     "application": True,
-    "depends": ["base","website",],
+    "depends": [
+        "base",
+        "website",
+    ],
     "data":[
         "security/ir.model.access.csv",
         "views/customer_view.xml",

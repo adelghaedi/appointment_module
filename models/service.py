@@ -33,4 +33,20 @@ class Service(models.Model):
     )    
 
 
+
+    def action_service_website(self):
+        self.ensure_one()
+        service_id=self.id
+        return {    
+                "type": "ir.actions.act_url",
+                "url": f"http://localhost:8069/service/{service_id}",
+                "target": "self",
+        }
+
+
+    
+
+    
+
+
     
