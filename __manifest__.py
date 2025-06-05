@@ -10,6 +10,7 @@
     "depends": [
         "base",
         "website",
+        "hr",
     ],
     "data":[
         "security/group.xml",
