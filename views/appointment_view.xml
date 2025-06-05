@@ -67,14 +67,7 @@
         <field name="binding_type">report</field>
     </record>
 
-     <!-- <report id="action_report_appointment"
-    string="Appointment Report"
-    model="appointment.appointment"
-    report_type="qweb-pdf"
-    name="appointment_module.report_appointment_document"
-    file="appointment_module.report_appointment_document"
-    print_report_name="'Appointment - %s' % (object.name)"
-  /> -->
+     
 
     
 </odoo>
