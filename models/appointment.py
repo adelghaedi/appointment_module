@@ -1,5 +1,5 @@
 from odoo import models,fields,api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError,UserError
 from datetime import timedelta
 
 
@@ -12,6 +12,7 @@ class Appointment(models.Model):
     start_datetime=fields.Datetime(string="start_datetime",required=True)
     duration=fields.Float(string="duraton",default=1.0,required=True)
     end_datetime=fields.Datetime(string="end_datetime",compute="_compute_end_datetime",store=True)
+    calendar_event_created = fields.Boolean(string='Calendar Event Created', default=False)
     state=fields.Selection(
         [
         ("draft","Draft"),
@@ -32,7 +33,7 @@ class Appointment(models.Model):
     )
 
     customer_id=fields.Many2one(
-        "appointment.customer",
+        "res.partner",
         string="Customer",
         ondelete="restrict",
     )
@@ -93,6 +94,25 @@ class Appointment(models.Model):
             service.quantity-=1
         return record
     
+
+    def create_calendar_event(self):
+        for record in self:
+            event_name= f"Appointment Event with {record.employee_id.name} Employee on {record.start_datetime}"
+            
+            if record.calendar_event_created:
+                raise UserError(f"{event_name} has already been created")
+            self.env['calendar.event'].create({
+                'name': event_name,
+                'start': record.start_datetime,
+                'stop': record.end_datetime,
+                'partner_ids': [(4, record.customer_id.id)],
+            })
+            record.calendar_event_created = True
+    
+    
+        
+    
+  
     def _check_employee_user(self):
         if not self.env.user.has_group('appointment.group_employee'):
             raise ValidationError("Only employees can perform this action.")

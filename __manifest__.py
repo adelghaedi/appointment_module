@@ -7,7 +7,10 @@
     "license": "AGPL-3",
     "installable": True,
     "application": True,
-    "depends": ["base"],
+    "depends": [
+        "base",
+        "website",
+    ],
     "data":[
         "security/group.xml",
         "security/ir.model.access.csv",
@@ -18,5 +21,11 @@
         "views/service_view.xml",
         "views/workfield_view.xml",
         "views/main_view.xml",
+        "templates/service_list_template.xml",
+        "templates/service_detail_template.xml",
+        "templates/appointment_report_template.xml",
     ],
+    "controllers":[
+        "controllers/service_controller.py",
+    ]
 }

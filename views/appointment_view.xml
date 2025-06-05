@@ -59,5 +59,32 @@
         <field name="view_mode">tree,form</field>
     </record>
 
+
+    
+
+    <record id="action_create_calendar_event" model="ir.actions.server">
+        <field name="name">Create Calendar Event For Customer</field>
+        <field name="model_id" ref="model_appointment_appointment"/>
+        <field name="binding_model_id" ref="model_appointment_appointment"/>
+        <field name="binding_type">action</field>
+        <field name="binding_view_types">tree,form</field>
+        <field name="state">code</field>
+        <field name="code">
+        record.create_calendar_event()
+        </field>
+    </record>
+
+
+    <record id="appointment_report" model="ir.actions.report">
+        <field name="name">Report</field>
+        <field name="model">appointment.appointment</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">appointment_module.report_appointment</field>
+        <field name="binding_model_id" ref="model_appointment_appointment"/>
+        <field name="binding_type">report</field>
+    </record>
+
+     
+
     
 </odoo>

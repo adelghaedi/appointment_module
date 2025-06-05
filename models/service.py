@@ -1,10 +1,14 @@
 from odoo import models,fields,api
 
+
+
+
 class Service(models.Model):
     _name="appointment.service"
     _sql_constraints=[
-        ("_check_unique_name","UNIQUE(name)","This servie exists..."),
+        ("_check_unique_name","UNIQUE(name)","This service exists..."),
         ("_check_price_positive","CHECK(price>0)","Price must be positive..."),
+        ("_check_quantity_nonnegative","CHECK(quantity>=0)","Quantity cannot negative..."),
     ]
     _order="quantity desc"
 
@@ -27,6 +31,22 @@ class Service(models.Model):
         column1="service_ids",
         column2="employee_ids",
     )    
+
+
+
+    def action_service_website(self):
+        self.ensure_one()
+        service_id=self.id
+        return {    
+                "type": "ir.actions.act_url",
+                "url": f"http://localhost:8069/service/{service_id}",
+                "target": "self",
+        }
+
+
+    
+
+    
 
 
     
