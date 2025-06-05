@@ -1,141 +1,26 @@
 <odoo>
-    <record id="appointment_employee_tree" model="ir.ui.view">
-        <field name="name">appointment.employee.tree</field>
-        <field name="model">appointment.employee</field>
-        <field name="arch" type="xml">
-            <tree string="Employees">
-                <field name="name"/>
-                <field name="phone"/>
-                <field name="email"/>
-                <field name="gender"/>
-            </tree>
-        </field>
-    </record>
 
-    <record id="appointment_employee_form" model="ir.ui.view">
+
+    <record id="view_appointment_employee_form" model="ir.ui.view">
         <field name="name">appointment.employee.form</field>
-        <field name="model">appointment.employee</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-            <form string="Employee">
-                
-
-                <header>
-                
-                <button 
-                    name="action_show_customers"
-                    type="object"
-                    class="btn"
-                >Customers</button>
-                
-                <button name="action_set_name" type="object" class="btn">
-                Set Name
-                </button>
-
-
-
-
-            </header>
-                <sheet>
-                    <div class="oe_stat_box" name="button_box">
-                <button 
-                        name="action_show_appointment"
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="action_show_appointment"
                         type="object"
                         class="oe_stat_button"
-                        icon="fa-calendar"
-                        >
-
-
-                <div class="o_field_widget o_stat_info">
-                    <span class="o_stat_value">
-                        <field name="total_appointments"/>
-                    </span>
-                    <span class="o_stat_text">
-                        Appointments
-                    </span>
-                </div>
+                        icon="fa-calendar">
+                    <field name="total_appointments" widget="statinfo" string="Appointments"/>
                 </button>
-                </div>
-
-
-                        <div class="me-5">
-                            <field name="image" widget="image" class="oe_avatar" />
-                        </div>
-                        <group>
-                        <group>
-                            <field name="name"/>
-                            <field name="gender"/>
-                            <field name="birth_date"/>
-                        </group>
-                        <group>
-                            <field name="phone"/>
-                            <field name="email"/>
-                            <field name="workfield_id"/>
-                            <field name="user_id"/>
-                        </group>
-                        </group>
-                        
-
-
-
-                
-                    
-                    <notebook>
-                        <page string="Services">
-                        <field name="service_ids">
-                            <tree>
-                                <field name="name"/>
-                            </tree>
-
-                        </field>
-                            
-                    </page>
-                    </notebook>
-                    
-                </sheet>
-            </form>
-        </field>
-    </record>
-
-
-    <record id="appointment_employee_kanban" model="ir.ui.view">
-        <field name="name">appointment.employee.kanban</field>
-        <field name="model">appointment.employee</field>
-        <field name="arch" type="xml">
-            <kanban class="o_kanban_example">
-                <field name="name"/>
-                <field name="phone"/>
-                <field name="email"/>
-                <field name="gender"/>
-
-                <templates>
-                    <t t-name="kanban-box">
-
-                        <div class="oe_kanban_global_click">
-                            <div class="o_kanban_image me-2 mt-2" >
-                                <img t-att-src=" kanban_image('appointment.employee', 'image' ,record.id.value)" class="oe_kanban_avatar" alt="Image"/>
-                            </div>
-
-
-                            
-                            <div> <strong><field name="name"/></strong></div>
-                            <div>📞 <field name="phone"/> </div>
-                            <div >👤 <field name="gender"/> </div>
-                            <div>🧩 <field name="workfield_id"/></div>
-
-                        </div>
-                    </t>
-
-
-                </templates>
-
-            </kanban>
+            </xpath>
         </field>
     </record>
 
     <record id="appointment_employee_action" model="ir.actions.act_window">
         <field name="name">employees</field>
-        <field name="res_model">appointment.employee</field>
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="res_model">hr.employee</field>
+        <field name="view_mode">kanban,tree,form</field>
     </record>
 
     
