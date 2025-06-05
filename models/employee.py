@@ -1,28 +1,12 @@
-from odoo.exceptions import ValidationError
 from odoo import models,fields,api
+from odoo.exceptions import ValidationError
 
 
 class Employee(models.Model):
-    _name="appointment.employee"
+    _inherit="hr.employee"
 
-
-    name=fields.Char(string="name",required=True)
-    phone = fields.Char(string="phone_number")
-    email = fields.Char(string="email")
-    gender = fields.Selection([
-        ('male', 'Male'),
-        ('female', 'Female'),
-        ('unknown', 'Unknown')
-    ], string="gender", default='unknown')
-    birth_date = fields.Date(string="birth_date")
-    image=fields.Image(string="customer_image")
     total_appointments=fields.Integer(compute="_compute_total_appointments")
-
-
-    user_id = fields.Many2one('res.users', string='User')
-
-    
-
+   
 
     appointment_ids=fields.One2many(
         "appointment.appointment",
@@ -44,31 +28,72 @@ class Employee(models.Model):
         string="WorkField"
     )
 
+
+    @api.model
+    def create(self, vals):
+        if not vals.get('user_id'):
+            user_model = self.env['res.users']
+            user_vals = {
+
+                'name': vals.get('name'),
+                'login': vals.get('work_email') or vals.get('personal_email') or vals.get('name').replace(' ', '').lower(),
+                'password': '12345',
+            }
+            if vals.get('image_1920'):
+                user_vals['image_1920'] = vals.get('image_1920')
+            
+            user = user_model.create(user_vals)
+            vals['user_id'] = user.id
+
+        employee = super(Employee, self).create(vals)
+
+        group_employee = self.env.ref('appointment_module.group_employee')
+        if employee.user_id and group_employee:
+            employee.user_id.write({'groups_id': [(4, group_employee.id)]})
+        
+        return employee
+    
+
+
+    def write(self,vals):
+
+        user_fields={}
+
+        if "name" in vals:
+            user_fields["name"]=vals["name"]
+        if "image_1920" in vals:
+            user_fields["image_1920"]=vals["image_1920"]
+        login=vals.get("work_email") or vals.get("personal_email") or vals.get("name")
+        print(login)
+        if login:
+            user_fields["login"]=login
+        
+        result=super(Employee,self).write(vals)
+
+        for employee in self:
+            if employee.user_id and user_fields:
+                employee.user_id.with_context(skip_employee_sync=True).write(user_fields)
+                print("ok")
+
+
+
+        return result
+    
+    
+    
+    # @api.ondelete(at_uninstall=False)
+    # def unlink(self):
+    #     for employee in self:
+    #         user=employee.user_id
+    #         employee.user_id=False
+    #         if user:
+    #             user.unlink()
+    #     return super().unlink()
+
     @api.depends("appointment_ids")
     def _compute_total_appointments(self)->None:
         for record in self:
             record.total_appointments=len(record.appointment_ids)
-
-
-    @api.constrains("email")
-    def _check_correct_email(self):
-        for record in self:
-            if record.email:
-                if "@" not in record.email:
-                    raise ValidationError("email must be contains @ sign...")
-
-
-
-    @api.constrains("phone")
-    def _check_correct_phone(self):
-        for record in self:
-            if record.phone:
-                if not record.phone.isnumeric():
-                    raise ValidationError("phone must be digits...")
-                if not record.phone.startswith("0"):
-                    raise ValidationError("phone must be start with zero digit...")
-                if  len(record.phone)!=11:
-                    raise ValidationError("phone must be eleven digits...")
     
 
 

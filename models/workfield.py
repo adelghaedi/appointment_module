@@ -19,7 +19,7 @@ class WorkField(models.Model):
     )
 
     employee_ids=fields.One2many(
-        "appointment.employee",
+        "hr.employee",
         inverse_name="workfield_id",
         string="Employees",
     )

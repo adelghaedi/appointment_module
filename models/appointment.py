@@ -39,7 +39,7 @@ class Appointment(models.Model):
     )
 
     employee_id=fields.Many2one(
-        "appointment.employee",
+        "hr.employee",
         string="Employee",
         ondelete="restrict",
         domain="[('service_ids', 'in', service_id)]"

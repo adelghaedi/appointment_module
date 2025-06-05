@@ -25,7 +25,7 @@ class Service(models.Model):
         )
     
     employee_ids=fields.Many2many(
-        "appointment.employee",
+        "hr.employee",
         string="Employees",
         relation="appointment_employee_service_rel",
         column1="service_ids",
