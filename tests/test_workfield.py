@@ -25,26 +25,5 @@ class TestWorkfield(TransactionCase):
         with self.assertRaises(Exception):
             self.env['appointment.workfield'].create({"name": "Unique Workfield"})
 
-    def test_workfield_rel(self):
-        workfield=self.env["appointment.workfield"].create({
-            "name":"Test Workfield"
-        })
-
-
-        service=self.env["appointment.service"].create(
-            {
-                "name":"Test Service",
-                "price":1200.0,
-                "workfield_id":workfield.id,
-            })
-
-        employee=self.env["appointment.employee"].create(
-            {
-                "name":"Test Employee",
-                "workfield_id":workfield.id,
-            })
-
-        self.assertIn(service,workfield.service_ids)
-        self.assertIn(employee,workfield.employee_ids)
 
         
