@@ -7,4 +7,12 @@
         <field name="description">Service Name Changed!</field>
     </record>
 
+
+    <record id="service_price_change" model="mail.message.subtype">
+        <field name="name">Service price Change</field>
+        <field name="res_model">appointment.service</field>
+        <field name="default" eval="True"/>
+        <field name="description">Service price Changed!</field>
+    </record>
+
 </odoo>
