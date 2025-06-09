@@ -22,6 +22,5 @@
         <field name="res_model">hr.employee</field>
         <field name="view_mode">kanban,tree,form</field>
     </record>
-
     
 </odoo>

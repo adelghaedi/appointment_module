@@ -29,67 +29,6 @@ class Employee(models.Model):
     )
 
 
-    @api.model
-    def create(self, vals):
-        if not vals.get('user_id'):
-            user_model = self.env['res.users']
-            user_vals = {
-
-                'name': vals.get('name'),
-                'login': vals.get('work_email') or vals.get('personal_email') or vals.get('name').replace(' ', '').lower(),
-                'password': '12345',
-            }
-            if vals.get('image_1920'):
-                user_vals['image_1920'] = vals.get('image_1920')
-            
-            user = user_model.create(user_vals)
-            vals['user_id'] = user.id
-
-        employee = super(Employee, self).create(vals)
-
-        group_employee = self.env.ref('appointment_module.group_employee')
-        if employee.user_id and group_employee:
-            employee.user_id.write({'groups_id': [(4, group_employee.id)]})
-        
-        return employee
-    
-
-
-    def write(self,vals):
-
-        user_fields={}
-
-        if "name" in vals:
-            user_fields["name"]=vals["name"]
-        if "image_1920" in vals:
-            user_fields["image_1920"]=vals["image_1920"]
-        login=vals.get("work_email") or vals.get("personal_email") or vals.get("name")
-        print(login)
-        if login:
-            user_fields["login"]=login
-        
-        result=super(Employee,self).write(vals)
-
-        for employee in self:
-            if employee.user_id and user_fields:
-                employee.user_id.with_context(skip_employee_sync=True).write(user_fields)
-                print("ok")
-
-
-
-        return result
-    
-    
-    
-    # @api.ondelete(at_uninstall=False)
-    # def unlink(self):
-    #     for employee in self:
-    #         user=employee.user_id
-    #         employee.user_id=False
-    #         if user:
-    #             user.unlink()
-    #     return super().unlink()
-
     @api.depends("appointment_ids")
     def _compute_total_appointments(self)->None:
         for record in self:
@@ -119,3 +58,14 @@ class Employee(models.Model):
     def action_set_name(self):
         for record in self:
             record.name="name"
+
+    # override action_craete_user 
+    def action_create_user(self):
+        result=super().action_create_user()
+        for employee in self:
+            if employee.user_id and employee_group:
+                employee.user_id.write({
+                'groups_id': [(4, self.env.ref('appointment_module.group_employee').id)]
+            })
+
+        return result
