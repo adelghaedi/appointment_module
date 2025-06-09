@@ -1,10 +1,10 @@
 <odoo>
     
-    <record id="appointment_service_name_change" model="mail.message.subtype">
+    <record id="service_name_change" model="mail.message.subtype">
         <field name="name">Service Name Change</field>
         <field name="res_model">appointment.service</field>
         <field name="default" eval="True"/>
-        <field name="description">Service Name Changed!</field>
+        <field name="description">Name Changed!</field>
     </record>
 
 
@@ -12,14 +12,14 @@
         <field name="name">Service price Change</field>
         <field name="res_model">appointment.service</field>
         <field name="default" eval="True"/>
-        <field name="description">Service price Changed!</field>
+        <field name="description">Price Changed!</field>
     </record>
 
     <record id="service_quantity_change" model="mail.message.subtype">
         <field name="name">Service Quantity Change</field>
         <field name="res_model">appointment.service</field>
         <field name="default" eval="True"/>
-        <field name="description">Service Quantity Changed!</field>
+        <field name="description">Quantity Changed!</field>
     </record>
     
 

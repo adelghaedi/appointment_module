@@ -51,7 +51,7 @@ class Service(models.Model):
     def _track_subtype(self, init_values):
         self.ensure_one()
         if 'name' in init_values:
-            return self.env.ref('appointment_module.appointment_service_name_change')
+            return self.env.ref('appointment_module.service_name_change')
         if "price" in init_values:
             return self.env.ref("appointment_module.service_price_change")
         if "quantity" in init_values:
