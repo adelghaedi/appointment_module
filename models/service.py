@@ -5,6 +5,7 @@ from odoo import models,fields,api
 
 class Service(models.Model):
     _name="appointment.service"
+    _inherit=["mail.thread"]
     _sql_constraints=[
         ("_check_unique_name","UNIQUE(name)","This service exists..."),
         ("_check_price_positive","CHECK(price>0)","Price must be positive..."),
@@ -12,11 +13,11 @@ class Service(models.Model):
     ]
     _order="quantity desc"
 
-    name=fields.Char(string="name",required=True)
-    price=fields.Float(string="price",required=True)
+    name=fields.Char(string="name",required=True,tracking=True)
+    price=fields.Float(string="price",required=True,tracking=True)
     image=fields.Image(string="service_image")
     sequence=fields.Integer(string="sequence",default=10)
-    quantity=fields.Integer(string="quantity")
+    quantity=fields.Integer(string="quantity",tracking=True)
 
     workfield_id=fields.Many2one(
         "appointment.workfield",
@@ -42,6 +43,9 @@ class Service(models.Model):
                 "url": f"http://localhost:8069/service/{service_id}",
                 "target": "self",
         }
+
+    def action_post_message(self):
+        self.message_post(body=f"Hi, Welcome to {self.name} Service...")
 
 
     
