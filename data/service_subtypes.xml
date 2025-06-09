@@ -15,4 +15,12 @@
         <field name="description">Service price Changed!</field>
     </record>
 
+    <record id="service_quantity_change" model="mail.message.subtype">
+        <field name="name">Service Quantity Change</field>
+        <field name="res_model">appointment.service</field>
+        <field name="default" eval="True"/>
+        <field name="description">Service Quantity Changed!</field>
+    </record>
+    
+
 </odoo>

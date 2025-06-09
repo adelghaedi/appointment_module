@@ -54,6 +54,9 @@ class Service(models.Model):
             return self.env.ref('appointment_module.appointment_service_name_change')
         if "price" in init_values:
             return self.env.ref("appointment_module.service_price_change")
+        if "quantity" in init_values:
+            return self.env.ref("appointment_module.service_quantity_change")
+
         return super()._track_subtype(init_values)
 
 
