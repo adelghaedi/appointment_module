@@ -48,6 +48,13 @@ class Service(models.Model):
         self.message_post(body=f"Hi, Welcome to {self.name} Service...")
 
 
+    def _track_subtype(self, init_values):
+        self.ensure_one()
+        if 'name' in init_values:
+            return self.env.ref('appointment_module.appointment_service_name_change')
+        return super()._track_subtype(init_values)
+
+
     
 
     

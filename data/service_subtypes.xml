@@ -1,0 +1,10 @@
+<odoo>
+    
+    <record id="appointment_service_name_change" model="mail.message.subtype">
+        <field name="name">Service Name Change</field>
+        <field name="res_model">appointment.service</field>
+        <field name="default" eval="True"/>
+        <field name="description">Service Name Changed!</field>
+    </record>
+
+</odoo>

@@ -23,6 +23,7 @@
         "templates/service_list_template.xml",
         "templates/service_detail_template.xml",
         "templates/appointment_report_template.xml",
+        "data/service_subtypes.xml",
     ],
     "controllers":[
         "controllers/service_controller.py",
