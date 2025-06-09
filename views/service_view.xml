@@ -21,9 +21,7 @@
         <field name="arch" type="xml">
             <form string="Service">
                 <header>
-                    <button name="action_service_website" class="btn-primary" type="object">
-                        Website
-                    </button>
+                    <button name="action_service_website" class="btn-primary" type="object" string="Website"/>
                     <button name="action_post_message" class="btn" type="object" string="send message"/>
                 </header>
                 
