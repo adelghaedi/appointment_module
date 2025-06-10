@@ -59,13 +59,4 @@ class Employee(models.Model):
         for record in self:
             record.name="name"
 
-    # override action_craete_user 
-    def action_create_user(self):
-        result=super().action_create_user()
-        for employee in self:
-            if employee.user_id and employee_group:
-                employee.user_id.write({
-                'groups_id': [(4, self.env.ref('appointment_module.group_employee').id)]
-            })
-
-        return result
+    
