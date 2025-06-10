@@ -21,10 +21,11 @@
             <header>
                 <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,rejected"/>
 
+
                 <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
-                    invisible="state!='draft'"                 
-                    groups="appointment_module.group_employee"
-                    />
+                  invisible="id == False"
+                  groups="appointment_module.group_employee"
+                  /> 
                 
                 <button name="action_reject" type="object" string="Reject"
                         class="btn-danger"

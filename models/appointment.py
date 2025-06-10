@@ -89,9 +89,21 @@ class Appointment(models.Model):
     @api.model
     def create(self,vals):
         record=super().create(vals)
+
+        # create appointment by confirmed state when employee craeted appointment 
+        employee_group=self.env.ref("appointment_module.group_employee")
+        current_user=self.env.user
+        
+        if employee_group in current_user.groups_id:
+            record.state = "confirmed"
+            
+            
+        # decrease quantity of service
         service=record.service_id
         if service and service.quantity:
             service.quantity-=1
+
+            
         return record
     
 
@@ -128,10 +140,6 @@ class Appointment(models.Model):
             self.write({"state":"rejected"})
         else:
             raise ValidationError("Cannot confirm an appointment that has already passed.")
-
-    def action_done(self):
-        self._check_employee_user()
-        self.write({'state': 'done'})
 
     def action_show(self):
         return {

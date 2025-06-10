@@ -58,5 +58,3 @@ class Employee(models.Model):
     def action_set_name(self):
         for record in self:
             record.name="name"
-
-    

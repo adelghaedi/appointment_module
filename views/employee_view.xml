@@ -14,6 +14,20 @@
                     <field name="total_appointments" widget="statinfo" string="Appointments"/>
                 </button>
             </xpath>
+            <xpath expr="//page[@name='public']" position="inside">
+                <group string="Workfield">
+                    <field name="workfield_id"/>
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='public']" position="after">
+                <page string="Services">
+                        <field name="service_ids">
+                            <tree>
+                                <field name="name"/>
+                            </tree>
+                        </field>
+                </page>
+            </xpath>
         </field>
     </record>
 
