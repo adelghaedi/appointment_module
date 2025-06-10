@@ -1,0 +1,26 @@
+<odoo>
+    
+    <record id="service_name_change" model="mail.message.subtype">
+        <field name="name">Service Name Change</field>
+        <field name="res_model">appointment.service</field>
+        <field name="default" eval="True"/>
+        <field name="description">Name Changed!</field>
+    </record>
+
+
+    <record id="service_price_change" model="mail.message.subtype">
+        <field name="name">Service price Change</field>
+        <field name="res_model">appointment.service</field>
+        <field name="default" eval="True"/>
+        <field name="description">Price Changed!</field>
+    </record>
+
+    <record id="service_quantity_change" model="mail.message.subtype">
+        <field name="name">Service Quantity Change</field>
+        <field name="res_model">appointment.service</field>
+        <field name="default" eval="True"/>
+        <field name="description">Quantity Changed!</field>
+    </record>
+    
+
+</odoo>
