@@ -9,9 +9,9 @@ class Appointment(models.Model):
         ("_check_duration_positive","CHECK(duration>0)","Duration must be positive.")
     ]
 
-    start_datetime=fields.Datetime(string="start_datetime",required=True)
-    duration=fields.Float(string="duraton",default=1.0,required=True)
-    end_datetime=fields.Datetime(string="end_datetime",compute="_compute_end_datetime",store=True)
+    start_datetime=fields.Datetime(string="Start Datetime",required=True)
+    duration=fields.Float(string="Duraton",default=1.0,required=True)
+    end_datetime=fields.Datetime(string="End Datetime",compute="_compute_end_datetime",store=True)
     calendar_event_created = fields.Boolean(string='Calendar Event Created', default=False)
     state=fields.Selection(
         [

@@ -13,11 +13,11 @@ class Service(models.Model):
     ]
     _order="quantity desc"
 
-    name=fields.Char(string="name",required=True,tracking=True)
-    price=fields.Float(string="price",required=True,tracking=True)
-    image=fields.Image(string="service_image")
-    sequence=fields.Integer(string="sequence",default=10)
-    quantity=fields.Integer(string="quantity",tracking=True)
+    name=fields.Char(string="Name",required=True,tracking=True)
+    price=fields.Float(string="Price",required=True,tracking=True)
+    image=fields.Image(string="Image")
+    sequence=fields.Integer(string="Sequence",default=10)
+    quantity=fields.Integer(string="Quantity",tracking=True)
 
     workfield_id=fields.Many2one(
         "appointment.workfield",
