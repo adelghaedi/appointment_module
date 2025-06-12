@@ -16,8 +16,9 @@ class Appointment(models.Model):
     state=fields.Selection(
         [
         ("draft","Draft"),
-         ("confirmed","Confirmed"),
-         ("rejected","Rejected"),
+        ("confirmed","Confirmed"),
+        ("rejected","Rejected"),
+        ("cancelled","Cancelled"),
         ],
         string="state",
         default="draft",

@@ -19,7 +19,7 @@
         <field name="arch" type="xml">
             <form string="appointment">
             <header>
-                <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,rejected"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,rejected,cancelled,confirmed"/>
 
 
                 <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
