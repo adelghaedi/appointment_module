@@ -12,7 +12,6 @@
         "website",
         "hr",
         "mail",
-        "portal",
     ],
     "data":[
         "security/group.xml",
