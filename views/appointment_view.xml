@@ -1,4 +1,5 @@
 <odoo>
+
     <record id="appointment_appointment_tree" model="ir.ui.view">
         <field name="name">appointment.appointment.tree</field>
         <field name="model">appointment.appointment</field>
@@ -7,48 +8,46 @@
                 <field name="start_datetime"/>
                 <field name="end_datetime"/>
                 <field name="service_id"/>
+                <field name="state"/>
                 <field name="customer_id"/>
                 <field name="employee_id"/>
-
             </tree>
         </field>
     </record>
+
     <record id="appointment_appointment_form1" model="ir.ui.view">
         <field name="name">appointment.appointment.form</field>
         <field name="model">appointment.appointment</field>
         <field name="arch" type="xml">
             <form string="appointment">
-            <header>
-                <field name="state" widget="statusbar" statusbar_visible="draft,rejected,cancelled,confirmed"/>
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,rejected,cancelled,confirmed"/>
 
+                    <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
+                        invisible="not id or state!='draft'"
+                        groups="appointment_module.group_employee"/> 
 
-                <button name="action_confirm" string="Confirm" type="object" class="oe_highlight"
-                  invisible="id == False"
-                  groups="appointment_module.group_employee"
-                  /> 
-                
-                <button name="action_reject" type="object" string="Reject"
+                    <button name="action_reject" type="object" string="Reject"
                         class="btn-danger"
-                    invisible="state!='draft'"                 
+                        invisible="not id or state!='draft'"
                         groups="appointment_module.group_employee"/>
 
-            </header>
+                </header>
                   
                 <sheet>
-                <group>
                     <group>
-                        <field name="start_datetime"/>
-                        <field name="duration"/>
-                        <field name="end_datetime"/>
-                    </group>
-                        
-                    <group>
-                        <field name="service_id"/>
-                        <field name="customer_id"/>
-                        <field name="employee_id"/>
-                    </group>
-                    </group>
+                        <group>
+                            <field name="start_datetime"/>
+                            <field name="duration"/>
+                            <field name="end_datetime"/>
+                        </group>
 
+                        <group>
+                            <field name="service_id"/>
+                            <field name="customer_id"/>
+                            <field name="employee_id"/>
+                        </group>
+                    </group>
                 </sheet>
             </form>
         </field>
@@ -59,9 +58,6 @@
         <field name="res_model">appointment.appointment</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-
-    
 
     <record id="action_create_calendar_event" model="ir.actions.server">
         <field name="name">Create Calendar Event For Customer</field>
@@ -75,7 +71,6 @@
         </field>
     </record>
 
-
     <record id="appointment_report" model="ir.actions.report">
         <field name="name">Report</field>
         <field name="model">appointment.appointment</field>
@@ -84,8 +79,5 @@
         <field name="binding_model_id" ref="model_appointment_appointment"/>
         <field name="binding_type">report</field>
     </record>
-
-     
-
-    
+ 
 </odoo>
