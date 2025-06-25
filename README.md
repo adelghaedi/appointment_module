@@ -17,6 +17,11 @@ This is a custom Odoo 17 module designed to manage appointment scheduling betwee
 
 - Odoo 17
 - Python 3.10+
+- Odoo base modules:
+  - `base`
+  - `website`
+  - `hr`
+  - `mail`
 - No third-party modules required
 
 ## 🚀 Installation
