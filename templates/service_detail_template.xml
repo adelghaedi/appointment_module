@@ -1,45 +1,34 @@
 <odoo>
 
     <template id="appointment_service_detail_template">
-
         <t t-call="website.layout">
             <div class="container my-5">
                 <div class="row align-items-center">
-                        <t t-if="service.image">
-                            <div class="col-md-4">
-                                <img t-att-src="image_data_uri(service.image)"
-                                class="card-img-top"
-                                alt="Service Image"
-                                style="bject-fit: cover;"/>
-                            </div>
-                        </t>
-                        
-
-                <div class="col-md-8">
-                    <h2 class="mb-3"><t t-out="service.name"/></h2> 
-                    <p>💰 <strong>Price:</strong> <t t-out="service.price"/> </p>
-                    <p>📦 <strong>Quantity:</strong> <t t-out="service.quantity"/></p>
-                    <p>
-                        <t t-if="service.workfield_id">
-                        🛠️ <strong>WorkField:</strong> <t t-out="service.workfield_id.name"/>
-                        </t>
-                    </p>
-                 </div>
-        
-        
-        
-        
+                    <t t-if="service.image">
+                        <div class="col-md-4">
+                            <img t-att-src="image_data_uri(service.image)" class="card-img-top" alt="Service Image" style="bject-fit: cover;"/>
+                        </div>
+                    </t>
+                    <div class="col-md-8">
+                        <h2 class="mb-3">
+                            <t t-out="service.name"/>
+                        </h2>
+                        <p>💰                            <strong>Price:</strong>
+                            <t t-out="service.price"/>
+                        </p>
+                        <p>📦                            <strong>Quantity:</strong>
+                            <t t-out="service.quantity"/>
+                        </p>
+                        <p>
+                            <t t-if="service.workfield_id">
+                            🛠️                                <strong>WorkField:</strong>
+                                <t t-out="service.workfield_id.name"/>
+                            </t>
+                        </p>
+                    </div>
+                </div>
             </div>
-
-
-            </div>
-        
-
-        
         </t>
     </template>
-
-
-
 
 </odoo>

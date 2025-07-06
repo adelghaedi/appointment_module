@@ -1,4 +1,5 @@
 <odoo>
+
     <record id="appointment_workfield_tree" model="ir.ui.view">
         <field name="name">appointment.workfield.tree</field>
         <field name="model">appointment.workfield</field>
@@ -16,27 +17,25 @@
             <form string="WorkField">
                 <sheet>
                     <group>
-                        <field name="name"/> 
+                        <field name="name"/>
                     </group>
-
-
-                        <notebook>
+                    <notebook>
                         <page string="Services">
-                            <field name="service_ids" >
+                            <field name="service_ids">
                                 <tree>
-                                <field name="name"/>
+                                    <field name="name"/>
                                 </tree>
                             </field>
 
                         </page>
-                            <page string="Employess">
-                            <field name="employee_ids" >
+                        <page string="Employess">
+                            <field name="employee_ids">
                                 <tree>
                                     <field name="name"/>
-                                </tree>   
+                                </tree>
                             </field>
-                            </page>
-                        </notebook>      
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
@@ -48,5 +47,4 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    
 </odoo>

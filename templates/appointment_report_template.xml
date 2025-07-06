@@ -11,28 +11,52 @@
           <div style="border: 1px solid #ddd; padding: 20px; border-radius: 8px; background-color: #f9f9f9;">
             <table style="width: 100%; font-size: 14px;">
               <tr>
-                <td style="padding: 8px;"><strong>Customer:</strong></td>
-                <td style="padding: 8px;"><t t-out="doc.customer_id.name"/></td>
+                <td style="padding: 8px;">
+                  <strong>Customer:</strong>
+                </td>
+                <td style="padding: 8px;">
+                  <t t-out="doc.customer_id.name"/>
+                </td>
               </tr>
               <tr>
-                <td style="padding: 8px;"><strong>Employee:</strong></td>
-                <td style="padding: 8px;"><t t-out="doc.employee_id.name"/></td>
+                <td style="padding: 8px;">
+                  <strong>Employee:</strong>
+                </td>
+                <td style="padding: 8px;">
+                  <t t-out="doc.employee_id.name"/>
+                </td>
               </tr>
               <tr>
-                <td style="padding: 8px;"><strong>Service:</strong></td>
-                <td style="padding: 8px;"><t t-out="doc.service_id.name"/></td>
+                <td style="padding: 8px;">
+                  <strong>Service:</strong>
+                </td>
+                <td style="padding: 8px;">
+                  <t t-out="doc.service_id.name"/>
+                </td>
               </tr>
               <tr>
-                <td style="padding: 8px;"><strong>Start DateTime:</strong></td>
-                <td style="padding: 8px;"><t t-out="doc.start_datetime"/></td>
+                <td style="padding: 8px;">
+                  <strong>Start DateTime:</strong>
+                </td>
+                <td style="padding: 8px;">
+                  <t t-out="doc.start_datetime"/>
+                </td>
               </tr>
               <tr>
-                <td style="padding: 8px;"><strong>End DateTime:</strong></td>
-                <td style="padding: 8px;"><t t-out="doc.end_datetime"/></td>
+                <td style="padding: 8px;">
+                  <strong>End DateTime:</strong>
+                </td>
+                <td style="padding: 8px;">
+                  <t t-out="doc.end_datetime"/>
+                </td>
               </tr>
               <tr>
-                <td style="padding: 8px;"><strong>Duration:</strong></td>
-                <td style="padding: 8px;"><t t-out="doc.duration"/></td>
+                <td style="padding: 8px;">
+                  <strong>Duration:</strong>
+                </td>
+                <td style="padding: 8px;">
+                  <t t-out="doc.duration"/>
+                </td>
               </tr>
             </table>
           </div>

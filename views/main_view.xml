@@ -1,21 +1,13 @@
 <odoo>
+
     <menuitem id="view_appointment_root" name="Appointments">
-        <menuitem id="view_appointment_main" name="Main" >
+        <menuitem id="view_appointment_main" name="Main">
             <menuitem id="view_appointment_customer" name="Customer" action="appointment_customer_action"/>
             <menuitem id="view_appointment_employee" name="Employee" action="appointment_employee_action"/>
             <menuitem id="view_appointment_appointment" name="Appointment" action="appointment_appointment_action"/>
             <menuitem id="view_appointment_service" name="Service" action="appointment_service_action"/>
             <menuitem id="view_appointment_workfield" name="WorkField" action="appointment_workfield_action"/>
-            
-
         </menuitem>
     </menuitem>
-
-
-        <!-- <record id="view_appointment_workfield" model="ir.ui.menu">
-                <field name="name">WorkField</field>
-                <field name="action" ref="appointment_workfield_action"/> 
-                <field name="parent_id" ref="view_appointment_main"/>
-            </record> -->
 
 </odoo>

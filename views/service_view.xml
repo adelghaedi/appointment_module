@@ -1,16 +1,15 @@
 <odoo>
+
     <record id="appointment_service_tree" model="ir.ui.view">
         <field name="name">appointment.service.tree</field>
         <field name="model">appointment.service</field>
         <field name="arch" type="xml">
-            
-            
             <tree string="Services" decoration-danger="quantity &lt; 10">
-                    <field name="image" widget="image" class="oe_avatar" options="{'size': [40, 40]}"/>
-                    <field name="sequence" widget="handle"/>
-                    <field name="name"/>
-                    <field name="quantity"/>
-                    <field name="price"/>
+                <field name="image" widget="image" class="oe_avatar" options="{'size': [40, 40]}"/>
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="quantity"/>
+                <field name="price"/>
             </tree>
         </field>
     </record>
@@ -24,15 +23,17 @@
                     <button name="action_service_website" class="btn-primary" type="object" string="Website"/>
                     <button name="action_post_message" class="btn" type="object" string="send message"/>
                 </header>
-                
+
                 <sheet>
-                    <div class="me-5"><field name="image" widget="image" class="oe_avatar" /></div>
+                    <div class="me-5">
+                        <field name="image" widget="image" class="oe_avatar" />
+                    </div>
                     <group>
                         <field name="name"/>
                         <field name="workfield_id"/>
                         <field name="quantity"/>
                         <field name="price"/>
-                    </group>                
+                    </group>
                 </sheet>
                 <div class="oe_chatter">
                     <field name="message_follower_ids" widget="mail_followers"/>
@@ -48,5 +49,4 @@
         <field name="view_mode">tree,form</field>
     </record>
 
-    
 </odoo>
