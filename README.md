@@ -27,5 +27,15 @@ This is a custom Odoo 17 module designed to manage appointment scheduling betwee
 ## 🚀 Installation
 
 1. Clone this repository into your Odoo custom addons directory:
+
    ```bash
    git clone https://github.com/adelghaedi/appointment_module.git
+   ```
+
+2. Restart your Odoo server and activate the developer mode.
+
+3. Go to **Apps**, click on **Update App List**, then search for **Appointment** and install it.
+
+## 📄 License
+
+This project is licensed under the MIT License – see the LICENSE section below for details.
