@@ -1,10 +1,11 @@
 {
     "name": "Appointment",
-    "summary": "Manage services, customers, and appointments",
+    "summary": "This module helps you manage services, customers, and employees,and schedule appointments for them. It's ideal for businesses like clinics, salons, or any service-based company that needs appointment management.",
     "version": "17.0.1.0.0",
-    "description":"",
-    "category": "Sales",
-    "license": "AGPL-3",
+    "category": "Services",
+    "license": "MIT",
+    "website": "https://github.com/adelghaedi/appointment_module",
+    "author": "AdelGhaedi",
     "installable": True,
     "application": True,
     "depends": [
@@ -13,7 +14,7 @@
         "hr",
         "mail",
     ],
-    "data":[
+    "data": [
         "security/group.xml",
         "security/ir.model.access.csv",
         "security/appointment_security.xml",
@@ -28,7 +29,7 @@
         "templates/appointment_report_template.xml",
         "data/service_subtypes.xml",
     ],
-    "controllers":[
+    "controllers": [
         "controllers/service_controller.py",
     ]
 }
