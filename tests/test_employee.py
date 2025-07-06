@@ -7,12 +7,12 @@ class TestService(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
 
-        self.employee = self.env['hr.employee'].create({
+        cls.employee = cls.env['hr.employee'].create({
             'name': 'Test Employee',
             'work_email': 'test.employee@example.com',
         })
 
-        self.employee_group = self.env.ref('appointment_module.group_employee')
+        cls.employee_group = cls.env.ref('appointment_module.group_employee')
 
     def test_action_create_user(self):
         self.assertFalse(self.employee.user_id,
@@ -33,7 +33,3 @@ class TestService(TransactionCase):
             self.employee.user_id.groups_id.ids,
             "User should be in the Appointment Employee group"
         )
-
-        # self.assertEqual(result['type'], 'ir.actions.act_window', "Action should return an act_window")
-        # self.assertEqual(result['res_model'], 'res.users', "Action should target res.users model")
-        # self.assertEqual(result['res_id'], self.employee.user_id.id, "Action should target the created user")
